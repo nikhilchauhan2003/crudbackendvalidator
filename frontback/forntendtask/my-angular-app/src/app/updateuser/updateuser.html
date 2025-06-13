@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <h2>Update User Details</h2>
+
+  <form *ngIf="userLoaded" (ngSubmit)="onSubmit()" #updateForm="ngForm">
+    <div class="mb-3">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="user.name" name="name" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="hobby">Hobby:</label>
+      <input type="text" class="form-control" id="hobby" [(ngModel)]="user.hobby" name="hobby" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+
+  <div *ngIf="!userLoaded" class="alert alert-warning mt-4 text-center">
+    No user data found. Please go back to the dashboard.
+  </div>
+</div>

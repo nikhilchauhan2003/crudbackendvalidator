@@ -1,0 +1,36 @@
+<div class="container mt-5">
+ <h2 class="text-center mb-4 animated-heading gradient-text display-5 fw-bold">
+  <i class="bi bi-stars me-2"></i> User Hobbies
+</h2>
+
+  <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+    <div class="col d-flex justify-content-center" *ngFor="let item of userHobbies">
+      <div class="card shadow-lg border-0 rounded-4 user-card p-3">
+        <div class="card-header bg-transparent border-0 text-center">
+          <h5 class="card-title mb-0">{{ item.user_name }}</h5>
+        </div>
+
+        <img
+          class="card-img-top rounded-circle mx-auto mt-3 profile-img"
+          [src]="item.profileImageUrl || 'https://via.placeholder.com/150'"
+          alt="{{ item.user_name }}"
+        />
+
+        <div class="card-body text-center">
+          <h6 class="card-subtitle mb-2 text-muted">{{ item.user_email }}</h6>
+          <p class="card-text">Hobby: {{ item.hobby || 'No hobby' }}</p>
+        </div>
+
+        <div class="card-footer bg-transparent border-0 d-flex justify-content-around">
+          <button class="btn btn-outline-primary btn-sm" (click)="editUser(item)">Edit</button>
+
+          <button class="btn btn-outline-danger btn-sm">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="userHobbies.length === 0" class="alert alert-info mt-4 text-center">
+    No user hobbies found.
+  </div>
+</div>
